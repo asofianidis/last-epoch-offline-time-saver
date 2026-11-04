@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using HarmonyLib;
-using Il2Cpp;
 using Il2CppEHG.Multiplayer;
 using MelonLoader;
 using OfflineTimeSaver;
@@ -15,7 +14,6 @@ namespace OfflineTimeSaver;
 public sealed class Mod : MelonMod
 {
     private static readonly HashSet<string> Fired = new();
-    private static float? _originalVacuumRange;
     private static bool? _lastOnline;
 
     /// <summary>True only when the game itself reports offline play. Anything unexpected means off.</summary>
@@ -68,8 +66,6 @@ public sealed class Mod : MelonMod
                 _lastOnline = online;
                 LoggerInstance.Msg(online ? "Online play detected: all gameplay changes are OFF." : "Offline play: gameplay changes are ON.");
             }
-
-            ApplyPickupRadius();
         }
         catch (Exception ex)
         {
@@ -85,12 +81,4 @@ public sealed class Mod : MelonMod
     }
 
     public override void OnGUI() => Menu.Draw();
-
-    /// <summary>Sets the game's pickup radius, or restores its own value when the mod shouldn't apply.</summary>
-    internal static void ApplyPickupRadius()
-    {
-        _originalVacuumRange ??= GroundItemManager.vacuumRange;
-        float wanted = Settings.VacuumRange;
-        GroundItemManager.vacuumRange = Active && wanted > 0f ? wanted : _originalVacuumRange.Value;
-    }
 }

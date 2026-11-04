@@ -10,7 +10,7 @@ namespace OfflineTimeSaver;
 internal static class Menu
 {
     private const float Width = 440f, RowHeight = 26f, Padding = 14f, DesignHeight = 1080f;
-    private const float SliderMax = 20f, RadiusMax = 100f;
+    private const float SliderMax = 20f;
 
     private static readonly Rect Panel = new(40f, 120f, Width, 678f);
 
@@ -82,7 +82,6 @@ internal static class Menu
         Slider(x, ref y, w, "Forging Potential", Settings.ForgingPotentialEntry, 1f, Settings.ForgingPotentialMax, 0.25f);
         Slider(x, ref y, w, "Movement speed", Settings.MovementSpeedEntry, 1f, Settings.MovementSpeedMax, 0.25f);
         Slider(x, ref y, w, "Monster density", Settings.DensityEntry, 1f, Settings.DensityMax, 0.25f);
-        Slider(x, ref y, w, "Pickup radius", Settings.VacuumRangeEntry, 0f, RadiusMax, 1f, "");
         y += 8f;
 
         Toggle(x, ref y, w, "Auto-pickup gold", Settings.AutoGold);
@@ -93,6 +92,7 @@ internal static class Menu
         Toggle(x, ref y, w, "Auto-pickup materials", Settings.AutoMaterials);
         Toggle(x, ref y, w, "Send auto-picked materials to storage", Settings.StoreMaterials);
         Toggle(x, ref y, w, "Auto-pickup gear your loot filter shows", Settings.AutoFilteredItems);
+        Toggle(x, ref y, w, "Free respecs", Settings.FreeRespecs);
         Toggle(x, ref y, w, "Offline-only login (next launch)", Settings.OfflineOnlyLogin);
         y += 8f;
 
@@ -138,11 +138,7 @@ internal static class Menu
         y += RowHeight;
     }
 
-    private static void Changed()
-    {
-        _dirty = true;
-        Mod.ApplyPickupRadius();
-    }
+    private static void Changed() => _dirty = true;
 
     private static void Close()
     {

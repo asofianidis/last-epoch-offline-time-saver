@@ -8,7 +8,7 @@ All gameplay changes switch off if the game reports online play. Modifying the c
 
 Press **F3** in game to open the settings menu. Changes apply immediately and are saved automatically; only the offline-only login setting waits until the next launch.
 
-The menu sliders go up to 20x (100 for pickup radius). For higher values, close the game and edit the `[OfflineTimeSaver]` section of:
+The menu sliders go up to 20x, or lower for settings with a smaller limit. For higher values, close the game and edit the `[OfflineTimeSaver]` section of:
 
 `F:\SteamLibrary\steamapps\common\Last Epoch\UserData\MelonPreferences.cfg`
 
@@ -23,7 +23,6 @@ The menu sliders go up to 20x (100 for pickup radius). For higher values, close 
 | `ItemQuantityMultiplier` | `2` | Item drops (max 20; high values can lag big fights) |
 | `UniqueAndSetRarityMultiplier` | `3` | Chance a drop is a Unique or Set |
 | `AutoPickupGold` / `Potions` / `XpTomes` / `FavorTomes` / `AncientBones` | `true` | Collects these automatically (potions only when not full) |
-| `StackablePickupRadius` | `20` | Picking up a stackable also collects others this far away; `0` keeps the normal value |
 | `MovementSpeedMultiplier` | `1` | Movement speed (max 5), through the game's Movespeed stat. Off by default until tested in play |
 | `MonsterDensityMultiplier` | `1` | Monsters per normal pack (max 5), from the next zone load. Bosses and single spawns are unchanged |
 | `AncientBonesMultiplier` | `3` | Ancient Bones per drop |
@@ -31,6 +30,7 @@ The menu sliders go up to 20x (100 for pickup radius). For higher values, close 
 | `AutoPickupMaterials` | `true` | Picks up shards, runes and glyphs when they drop |
 | `SendMaterialsToStorage` | `true` | Sends auto-picked materials straight to material storage |
 | `AutoPickupFilteredItems` | `true` | Picks up gear matched by a visible rule in your active loot filter. Does nothing without a filter |
+| `FreeRespecs` | `true` | Respeccing passives, masteries, the Weaver tree and blessings costs nothing. Skill trees are already free |
 
 A multiplier of `1` means normal.
 
