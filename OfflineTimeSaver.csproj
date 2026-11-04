@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <PlatformTarget>x64</PlatformTarget>
+    <AssemblyName>OfflineTimeSaver</AssemblyName>
+    <RootNamespace>OfflineTimeSaver</RootNamespace>
+    <Nullable>disable</Nullable>
+    <LangVersion>latest</LangVersion>
+    <Version>1.0.0</Version>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    <GenerateDependencyFile>false</GenerateDependencyFile>
+    <GameDir Condition="'$(GameDir)' == ''">F:\SteamLibrary\steamapps\common\Last Epoch</GameDir>
+    <ML>$(GameDir)\MelonLoader\net6\</ML>
+    <DeployToMods Condition="'$(DeployToMods)' == ''">true</DeployToMods>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="src\**\*.cs" />
+    <Reference Include="$(ML)MelonLoader.dll" Private="false" />
+    <Reference Include="$(ML)0Harmony.dll" Private="false" />
+    <Reference Include="$(ML)Il2CppInterop.Runtime.dll" Private="false" />
+    <Reference Include="$(ML)Il2CppInterop.Common.dll" Private="false" />
+    <Reference Include="$(ML)Mono.Cecil.dll" Private="false" />
+    <Reference Include="$(GameDir)\MelonLoader\Il2CppAssemblies\*.dll" Private="false" />
+  </ItemGroup>
+
+  <Target Name="DeployMod" AfterTargets="Build" Condition="'$(DeployToMods)' == 'true'">
+    <MakeDir Directories="$(GameDir)\Mods" />
+    <Copy SourceFiles="$(TargetPath)" DestinationFolder="$(GameDir)\Mods" />
+  </Target>
+</Project>
