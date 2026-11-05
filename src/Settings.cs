@@ -14,11 +14,11 @@ internal static class Settings
 
     internal const float MovementSpeedMax = 5f, DensityMax = 5f, ForgingPotentialMax = 10f;
 
-    internal static MelonPreferences_Entry<float> XpEntry, AbilityXpEntry, FavorEntry, GoldEntry, ItemQuantityEntry, UniqueSetEntry, VacuumRangeEntry;
+    internal static MelonPreferences_Entry<float> XpEntry, AbilityXpEntry, FavorEntry, GoldEntry, ItemQuantityEntry, UniqueSetEntry;
     internal static MelonPreferences_Entry<float> MovementSpeedEntry, DensityEntry, AncientBonesEntry, ForgingPotentialEntry;
     internal static MelonPreferences_Entry<bool> Enabled, OfflineOnlyLogin;
     internal static MelonPreferences_Entry<bool> AutoGold, AutoPotions, AutoXpTomes, AutoFavorTomes, AutoAncientBones;
-    internal static MelonPreferences_Entry<bool> AutoMaterials, StoreMaterials, AutoFilteredItems;
+    internal static MelonPreferences_Entry<bool> AutoMaterials, StoreMaterials, AutoFilteredItems, FreeRespecs, KeylessDungeons, UnlimitedHealth, UnlimitedMana;
 
     internal static float MovementSpeed => Multiplier(MovementSpeedEntry, MovementSpeedMax);
     internal static float Density => Multiplier(DensityEntry, DensityMax);
@@ -31,7 +31,6 @@ internal static class Settings
     internal static float Gold => Multiplier(GoldEntry, MultiplierMax);
     internal static float ItemQuantity => Multiplier(ItemQuantityEntry, ItemQuantityMax);
     internal static float UniqueSet => Multiplier(UniqueSetEntry, MultiplierMax);
-    internal static float VacuumRange => Math.Clamp(VacuumRangeEntry.Value, 0f, 200f);
 
     private static float Multiplier(MelonPreferences_Entry<float> entry, float max) => Math.Clamp(entry.Value, 1f, max);
 
@@ -54,8 +53,6 @@ internal static class Settings
         AutoXpTomes = c.CreateEntry("AutoPickupXpTomes", true);
         AutoFavorTomes = c.CreateEntry("AutoPickupFavorTomes", true);
         AutoAncientBones = c.CreateEntry("AutoPickupAncientBones", true);
-        VacuumRangeEntry = c.CreateEntry("StackablePickupRadius", 20f, description: "When you pick up a stackable item, also collect others this far away. 0 = keep the normal value.");
-
         MovementSpeedEntry = c.CreateEntry("MovementSpeedMultiplier", 1f, description: "Movement speed (max 5). 1 = normal.");
         DensityEntry = c.CreateEntry("MonsterDensityMultiplier", 1f, description: "Monsters per normal pack (max 5), from the next zone load. Bosses and single spawns stay as they are. 1 = normal.");
         AncientBonesEntry = c.CreateEntry("AncientBonesMultiplier", 3f, description: "Ancient Bones per drop. 1 = normal.");
@@ -63,6 +60,10 @@ internal static class Settings
         AutoMaterials = c.CreateEntry("AutoPickupMaterials", true, description: "Shards, runes and glyphs are picked up when they drop.");
         StoreMaterials = c.CreateEntry("SendMaterialsToStorage", true, description: "Auto-picked materials go straight to material storage.");
         AutoFilteredItems = c.CreateEntry("AutoPickupFilteredItems", true, description: "Pick up gear matched by a visible rule in your active loot filter. Needs a loot filter.");
+        FreeRespecs = c.CreateEntry("FreeRespecs", true, description: "Respeccing passives, masteries, the Weaver tree and blessings costs nothing.");
+        KeylessDungeons = c.CreateEntry("KeylessDungeons", true, description: "Enter dungeons without a key.");
+        UnlimitedHealth = c.CreateEntry("UnlimitedHealth", false, description: "Health stays full and you cannot die.");
+        UnlimitedMana = c.CreateEntry("UnlimitedMana", false, description: "Mana stays full and abilities can always be cast.");
 
         Save();
     }
