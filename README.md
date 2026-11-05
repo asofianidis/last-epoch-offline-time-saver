@@ -8,7 +8,7 @@ All gameplay changes switch off if the game reports online play. Modifying the c
 
 Press **F3** in game to open the settings menu. Changes apply immediately and are saved automatically; only the offline-only login setting waits until the next launch.
 
-The Character XP and Skill XP sliders go up to 100x. The others go up to 20x, or lower for settings with a smaller limit. For higher values, close the game and edit the `[OfflineTimeSaver]` section of:
+The Character XP and Skill XP sliders go up to 1000x, which is also their limit in the file. The others go up to 20x, or lower for settings with a smaller limit. For higher values, close the game and edit the `[OfflineTimeSaver]` section of:
 
 `F:\SteamLibrary\steamapps\common\Last Epoch\UserData\MelonPreferences.cfg`
 
@@ -32,6 +32,8 @@ The Character XP and Skill XP sliders go up to 100x. The others go up to 20x, or
 | `AutoPickupFilteredItems` | `true` | Picks up gear matched by a visible rule in your active loot filter. Does nothing without a filter |
 | `FreeRespecs` | `true` | Respeccing passives, masteries, the Weaver tree and blessings costs nothing. Skill trees are already free |
 | `KeylessDungeons` | `true` | Enter dungeons without a key. A key left in the slot is still used up |
+| `UnlimitedHealth` | `false` | Health stays full and you cannot die. On-hit effects still trigger |
+| `UnlimitedMana` | `false` | Mana stays full and abilities can always be cast. On-spend effects still trigger |
 
 A multiplier of `1` means normal.
 

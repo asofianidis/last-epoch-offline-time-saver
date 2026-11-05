@@ -78,6 +78,7 @@ public sealed class Mod : MelonMod
         Menu.Update();
         OfflineLogin.Update();
         MovementSpeed.Update();
+        UnlimitedResources.Update();
     }
 
     public override void OnGUI() => Menu.Draw();

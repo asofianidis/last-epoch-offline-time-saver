@@ -10,9 +10,9 @@ namespace OfflineTimeSaver;
 internal static class Menu
 {
     private const float Width = 440f, RowHeight = 26f, Padding = 14f, DesignHeight = 1080f;
-    private const float SliderMax = 20f, XpSliderMax = 100f;
+    private const float SliderMax = 20f, XpSliderMax = 1000f;
 
-    private static readonly Rect Panel = new(40f, 120f, Width, 704f);
+    private static readonly Rect Panel = new(40f, 120f, Width, 756f);
 
     private static bool _visible, _pointerOver, _dirty, _inputBlocked, _drawErrorLogged;
 
@@ -94,6 +94,8 @@ internal static class Menu
         Toggle(x, ref y, w, "Auto-pickup gear your loot filter shows", Settings.AutoFilteredItems);
         Toggle(x, ref y, w, "Free respecs", Settings.FreeRespecs);
         Toggle(x, ref y, w, "Enter dungeons without a key", Settings.KeylessDungeons);
+        Toggle(x, ref y, w, "Unlimited health", Settings.UnlimitedHealth);
+        Toggle(x, ref y, w, "Unlimited mana", Settings.UnlimitedMana);
         Toggle(x, ref y, w, "Offline-only login (next launch)", Settings.OfflineOnlyLogin);
         y += 8f;
 
