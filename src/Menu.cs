@@ -10,9 +10,9 @@ namespace OfflineTimeSaver;
 internal static class Menu
 {
     private const float Width = 440f, RowHeight = 26f, Padding = 14f, DesignHeight = 1080f;
-    private const float SliderMax = 20f;
+    private const float SliderMax = 20f, XpSliderMax = 100f;
 
-    private static readonly Rect Panel = new(40f, 120f, Width, 678f);
+    private static readonly Rect Panel = new(40f, 120f, Width, 704f);
 
     private static bool _visible, _pointerOver, _dirty, _inputBlocked, _drawErrorLogged;
 
@@ -72,8 +72,8 @@ internal static class Menu
         Toggle(x, ref y, w, "Enable all gameplay changes", Settings.Enabled);
         y += 8f;
 
-        Slider(x, ref y, w, "Character XP", Settings.XpEntry, 1f, SliderMax, 0.5f);
-        Slider(x, ref y, w, "Skill XP", Settings.AbilityXpEntry, 1f, SliderMax, 0.5f);
+        Slider(x, ref y, w, "Character XP", Settings.XpEntry, 1f, XpSliderMax, 0.5f);
+        Slider(x, ref y, w, "Skill XP", Settings.AbilityXpEntry, 1f, XpSliderMax, 0.5f);
         Slider(x, ref y, w, "Faction favor", Settings.FavorEntry, 1f, SliderMax, 0.5f);
         Slider(x, ref y, w, "Gold", Settings.GoldEntry, 1f, SliderMax, 0.5f);
         Slider(x, ref y, w, "Item drops", Settings.ItemQuantityEntry, 1f, Settings.ItemQuantityMax, 0.5f);
@@ -93,6 +93,7 @@ internal static class Menu
         Toggle(x, ref y, w, "Send auto-picked materials to storage", Settings.StoreMaterials);
         Toggle(x, ref y, w, "Auto-pickup gear your loot filter shows", Settings.AutoFilteredItems);
         Toggle(x, ref y, w, "Free respecs", Settings.FreeRespecs);
+        Toggle(x, ref y, w, "Enter dungeons without a key", Settings.KeylessDungeons);
         Toggle(x, ref y, w, "Offline-only login (next launch)", Settings.OfflineOnlyLogin);
         y += 8f;
 

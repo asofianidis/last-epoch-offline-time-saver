@@ -18,7 +18,7 @@ internal static class Settings
     internal static MelonPreferences_Entry<float> MovementSpeedEntry, DensityEntry, AncientBonesEntry, ForgingPotentialEntry;
     internal static MelonPreferences_Entry<bool> Enabled, OfflineOnlyLogin;
     internal static MelonPreferences_Entry<bool> AutoGold, AutoPotions, AutoXpTomes, AutoFavorTomes, AutoAncientBones;
-    internal static MelonPreferences_Entry<bool> AutoMaterials, StoreMaterials, AutoFilteredItems, FreeRespecs;
+    internal static MelonPreferences_Entry<bool> AutoMaterials, StoreMaterials, AutoFilteredItems, FreeRespecs, KeylessDungeons;
 
     internal static float MovementSpeed => Multiplier(MovementSpeedEntry, MovementSpeedMax);
     internal static float Density => Multiplier(DensityEntry, DensityMax);
@@ -61,6 +61,7 @@ internal static class Settings
         StoreMaterials = c.CreateEntry("SendMaterialsToStorage", true, description: "Auto-picked materials go straight to material storage.");
         AutoFilteredItems = c.CreateEntry("AutoPickupFilteredItems", true, description: "Pick up gear matched by a visible rule in your active loot filter. Needs a loot filter.");
         FreeRespecs = c.CreateEntry("FreeRespecs", true, description: "Respeccing passives, masteries, the Weaver tree and blessings costs nothing.");
+        KeylessDungeons = c.CreateEntry("KeylessDungeons", true, description: "Enter dungeons without a key.");
 
         Save();
     }
