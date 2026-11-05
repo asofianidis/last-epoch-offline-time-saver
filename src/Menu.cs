@@ -12,9 +12,10 @@ internal static class Menu
     private const float Width = 440f, RowHeight = 26f, Padding = 14f, DesignHeight = 1080f;
     private const float SliderMax = 20f, XpSliderMax = 1000f;
 
-    private static readonly Rect Panel = new(40f, 120f, Width, 756f);
+    private static readonly Rect Panel = new(40f, 120f, Width, 816f);
 
     private static bool _visible, _pointerOver, _dirty, _inputBlocked, _drawErrorLogged;
+    private static string _levelResult = "";
 
     internal static void Update()
     {
@@ -98,6 +99,15 @@ internal static class Menu
         Toggle(x, ref y, w, "Unlimited mana", Settings.UnlimitedMana);
         Toggle(x, ref y, w, "Offline-only login (next launch)", Settings.OfflineOnlyLogin);
         y += 8f;
+
+        float half = (w - 8f) / 2f;
+        GUI.enabled = Mod.Active;
+        if (GUI.Button(new Rect(x, y, half, 26f), "Max character level")) _levelResult = Leveling.MaxCharacter();
+        if (GUI.Button(new Rect(x + half + 8f, y, half, 26f), "Max all skill levels")) _levelResult = Leveling.MaxSkills();
+        GUI.enabled = true;
+        y += RowHeight;
+        GUI.Label(new Rect(x, y, w, RowHeight), _levelResult);
+        y += RowHeight + 8f;
 
         if (GUI.Button(new Rect(x, y, 150f, 26f), "Reset to defaults"))
         {

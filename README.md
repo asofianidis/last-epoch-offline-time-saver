@@ -37,6 +37,11 @@ The Character XP and Skill XP sliders go up to 1000x, which is also their limit 
 
 A multiplier of `1` means normal.
 
+The menu also has two buttons, available only in offline play. They can't be undone:
+
+- **Max character level** levels the character up to 100, granting the usual points and unlocks.
+- **Max all skill levels** raises every specialised skill to level 20. Skills that aren't specialised have no level, so specialise first.
+
 ## Checking that it works
 
 Each feature logs one `[fired]` line the first time it runs, and patches that could not be applied show as `[FAILED]`. See:
