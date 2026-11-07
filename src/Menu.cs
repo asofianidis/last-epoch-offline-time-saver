@@ -12,9 +12,9 @@ internal static class Menu
     private const float Width = 440f, RowHeight = 26f, Padding = 14f, DesignHeight = 1080f;
     private const float SliderMax = 20f, XpSliderMax = 1000f;
 
-    private static readonly Rect Panel = new(40f, 120f, Width, 816f);
+    private static readonly Rect Panel = new(40f, 120f, Width, 846f);
 
-    private static bool _visible, _pointerOver, _dirty, _inputBlocked, _drawErrorLogged;
+    private static bool _visible, _pointerOver, _dirty, _inputBlocked, _drawErrorLogged, _confirmingSkip;
     private static string _levelResult = "";
 
     internal static void Update()
@@ -104,6 +104,13 @@ internal static class Menu
         GUI.enabled = Mod.Active;
         if (GUI.Button(new Rect(x, y, half, 26f), "Max character level")) _levelResult = Leveling.MaxCharacter();
         if (GUI.Button(new Rect(x + half + 8f, y, half, 26f), "Max all skill levels")) _levelResult = Leveling.MaxSkills();
+        y += RowHeight + 4f;
+        // This one rewrites a whole playthrough, so it takes a second click.
+        if (GUI.Button(new Rect(x, y, w, 26f), _confirmingSkip ? "Can't be undone - click again to confirm" : "Finish campaign, go to End of Time"))
+        {
+            if (_confirmingSkip) _levelResult = Campaign.SkipToEndGame();
+            _confirmingSkip = !_confirmingSkip;
+        }
         GUI.enabled = true;
         y += RowHeight;
         GUI.Label(new Rect(x, y, w, RowHeight), _levelResult);
@@ -156,6 +163,7 @@ internal static class Menu
     private static void Close()
     {
         _pointerOver = false;
+        _confirmingSkip = false;
         BlockGameInput(false);
         if (_dirty) Save();
     }

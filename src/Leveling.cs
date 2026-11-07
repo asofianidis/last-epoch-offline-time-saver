@@ -56,7 +56,7 @@ internal static class Leveling
         return count;
     }
 
-    private static void Save()
+    internal static void Save()
     {
         var data = PlayerFinder.getPlayerDataTracker();
         if (data != null) data.MarkCharacterDirty(true);
