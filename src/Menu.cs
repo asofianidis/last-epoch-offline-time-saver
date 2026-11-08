@@ -12,10 +12,11 @@ internal static class Menu
     private const float Width = 440f, RowHeight = 26f, Padding = 14f, DesignHeight = 1080f;
     private const float SliderMax = 20f, XpSliderMax = 1000f;
 
-    private static readonly Rect Panel = new(40f, 120f, Width, 846f);
+    private static readonly Rect Panel = new(40f, 90f, Width, 936f);
 
     private static bool _visible, _pointerOver, _dirty, _inputBlocked, _drawErrorLogged, _confirmingSkip;
     private static string _levelResult = "";
+    private static GUIStyle _centered;
 
     internal static void Update()
     {
@@ -111,6 +112,19 @@ internal static class Menu
             if (_confirmingSkip) _levelResult = Campaign.SkipToEndGame();
             _confirmingSkip = !_confirmingSkip;
         }
+        y += RowHeight + 4f;
+
+        // Name between the arrows, values on their own line, so neither is cut off.
+        Monolith.Selected(out string timeline, out string values);
+        _centered ??= new GUIStyle(GUI.skin.label) { alignment = TextAnchor.MiddleCenter, wordWrap = false };
+        if (GUI.Button(new Rect(x, y, 30f, 24f), "<")) Monolith.Cycle(-1);
+        GUI.Label(new Rect(x + 34f, y, w - 68f, RowHeight - 2f), timeline, _centered);
+        if (GUI.Button(new Rect(x + w - 30f, y, 30f, 24f), ">")) Monolith.Cycle(1);
+        y += RowHeight - 2f;
+        GUI.Label(new Rect(x, y, w, RowHeight - 2f), values, _centered);
+        y += RowHeight;
+        if (GUI.Button(new Rect(x, y, half, 26f), $"+{Monolith.CorruptionStep} corruption")) _levelResult = Monolith.AddCorruption();
+        if (GUI.Button(new Rect(x + half + 8f, y, half, 26f), "Fill stability")) _levelResult = Monolith.FillStability();
         GUI.enabled = true;
         y += RowHeight;
         GUI.Label(new Rect(x, y, w, RowHeight), _levelResult);

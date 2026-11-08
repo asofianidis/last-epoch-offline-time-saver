@@ -37,11 +37,12 @@ The Character XP and Skill XP sliders go up to 1000x, which is also their limit 
 
 A multiplier of `1` means normal.
 
-The menu also has three buttons, available only in offline play. They can't be undone:
+The menu also has these buttons, available only in offline play. They can't be undone:
 
 - **Max character level** levels the character up to 100, granting the usual points and unlocks.
 - **Max all skill levels** raises every specialised skill to level 20. Skills that aren't specialised have no level, so specialise first.
 - **Finish campaign, go to End of Time** completes the main story and every quest that gives passive points or idol slots, granting their normal rewards, then unlocks every waypoint, empowers all Monolith timelines, completes on this character each timeline already completed on this stash (with its completion quest, but no blessings), joins the Forgotten Knights with the Harbinger reward item, and travels to the End of Time. It takes a second click to confirm and can be used again on a character that has already had it. Choose your mastery in the passive tree afterwards. Other side quests, faction intros and the Monolith tutorial stay open, and doors or events in old zones that are triggered by playing through them are not changed.
+- **Timeline selector, +50 corruption and Fill stability** work on one of the character's Monolith timelines, picked with the `<` and `>` arrows (normal and empowered are separate). Corruption goes up by 50 per click, up to the timeline's limit if it has one, and stability fills to its maximum. They only work in the End of Time, so a timeline is never changed during one of its echoes, and only on timelines already started in the Monolith.
 
 ## Checking that it works
 
