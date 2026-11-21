@@ -10,7 +10,7 @@ Press **F3** in game to open the settings menu. Changes apply immediately and ar
 
 The Character XP and Skill XP sliders go up to 1000x, which is also their limit in the file. The others go up to 20x, or lower for settings with a smaller limit. For higher values, close the game and edit the `[OfflineTimeSaver]` section of:
 
-`F:\SteamLibrary\steamapps\common\Last Epoch\UserData\MelonPreferences.cfg`
+`...\steamapps\common\Last Epoch\UserData\MelonPreferences.cfg`
 
 | Setting | Default | What it does |
 | --- | --- | --- |
@@ -48,7 +48,7 @@ The menu also has these buttons, available only in offline play. They can't be u
 
 Each feature logs one `[fired]` line the first time it runs, and patches that could not be applied show as `[FAILED]`. See:
 
-`F:\SteamLibrary\steamapps\common\Last Epoch\MelonLoader\Latest.log`
+`...\steamapps\common\Last Epoch\MelonLoader\Latest.log`
 
 ## Building
 
